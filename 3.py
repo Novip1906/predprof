@@ -1,10 +1,19 @@
 import csv
-a = []
-with open('songs.csv') as file:
-    reader = csv.DictReader(file, delimiter=';')
-    for s in reader.reader:
-        a.append(s)
-    del a[0]
+
+def get_data():
+    """
+    This function is used for getting data from songs.csv file
+    :return:
+    """
+    a = []
+    with open('songs.csv') as file:
+        # print(file.read())
+        reader = csv.DictReader(file, delimiter=';')
+        for s in reader.reader:
+            a.append(s)
+        del a[0]
+    return a
+a = get_data()
 
 inp = input('Введите имя артиста: ')
 while len(inp) > 0 and inp != '0':
