@@ -1,6 +1,7 @@
 import csv
 from datetime import datetime
 
+
 def get_data():
     """
     This function is used for getting data from songs.csv file
@@ -14,6 +15,7 @@ def get_data():
             a.append(s)
         del a[0]
     return a
+
 
 def process_songs():
     """
@@ -36,8 +38,17 @@ def process_songs():
         res.append(a[i])
     return res
 
-with open('songs_new.csv', 'w') as file:
-    rs = 'streams;artist_name;track_name;date\n'
-    for s in process_songs():
-        rs += ';'.join(s) + '\n'
-    file.write(rs)
+
+def write_new_songs():
+    """
+    this function is used for writings processed songs in songs_new.csv
+    :return:
+    """
+    with open('songs_new.csv', 'w') as file:
+        rs = 'streams;artist_name;track_name;date\n'
+        for s in process_songs():
+            rs += ';'.join(s) + '\n'
+        file.write(rs)
+
+
+write_new_songs()
